@@ -1,5 +1,5 @@
 import { soundFx } from './audio';
-import {
+import { LevelTaskType,
   drawBossBeam,
   drawBossEntity,
   drawBossTelegraph,
@@ -224,7 +224,9 @@ export class EcoSplitEngine {
     // Tutorial always uses clean standard training parameters
     this.mysteryModifier = this.mode === 'tutorial' ? null : mysteryModifier;
     this.timeRemaining = level.durationSeconds;
-
+    for (const task of level.tasks ?? []) {
+  this.taskProgress[task.id] = 0;
+}
     const initialMaxHp = 100 + (this.mysteryModifier?.maxHealthBonus ?? 0);
     const p1CarryMax = Math.max(20, 60 + (this.mysteryModifier?.p1TankBonus ?? 0));
     const p2CarryMax = Math.max(2, 5 + (this.mysteryModifier?.p2BagBonus ?? 0));
@@ -338,9 +340,22 @@ export class EcoSplitEngine {
         4.6
       );
     }
-  }
+  } 
+    private addTaskProgress(type: LevelTaskType, amount = 1) {
+  for (const task of this.level.tasks ?? []) {
+    if (task.type !== type) continue;
 
-  private nextId(prefix: string) {
+    const current = this.taskProgress[task.id] ?? 0;
+
+    this.taskProgress[task.id] = Math.min(
+      task.target,
+      current + amount
+    );
+  }
+}
+
+  private nextId(prefix: string) { 
+  
     this.uidCounter += 1;
     return `${prefix}-${this.uidCounter}`;
   }
