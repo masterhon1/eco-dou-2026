@@ -178,6 +178,7 @@ export class EcoSplitEngine {
   public waterWastedLiters = 0;
   public waterCarryingLiters = 0;
   public tapsFixed = 0;
+  private taskProgress: Record<string, number> = {};
   public mealsDonated = 0;
   public foodSpoiledCount = 0;
   public p1Score = 0;
