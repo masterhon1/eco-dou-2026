@@ -146,7 +146,7 @@ export interface LevelConfig {
   worldWidth: number;
   worldHeight: number;
   durationSeconds: number;
-  tasks: LevelTask[];
+  tasks?: LevelTask[];
   waterTargetLiters: number;
   mealsTarget: number;
   floorTheme: 'courtyard' | 'cafeteria' | 'market' | 'plaza';
