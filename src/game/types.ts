@@ -118,7 +118,7 @@ export interface RectZone {
 export interface LevelConfig {
   id: string;
   number: number;
-  mode?: 'standard' | 'tutorial' | 'boss';
+  mode?: 'standard' | 'tutorial' | 'boss' | 'seasonal';
   name: string;
   subtitle: string;
   description: string;
