@@ -366,7 +366,7 @@ export interface LastMysteryReveal {
 }
 
 export interface GameHudSnapshot {
-  mode: 'standard' | 'tutorial' | 'boss';
+  mode: 'standard' | 'tutorial' | 'boss' | 'seasonal';
   timeRemaining: number;
   timeOfDay: TimeOfDayPhase;
   daylightLevel: number;
@@ -379,6 +379,12 @@ export interface GameHudSnapshot {
   waterWastedLiters: number;
   waterCarryingLiters: number;
   tapsFixed: number;
+  taskProgress: {
+  id: string;
+  progress: number;
+  target: number;
+  completed: boolean;
+}[];
   activeLeaks: number;
   mealsDonated: number;
   foodCarryingCount: number;
