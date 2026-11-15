@@ -114,6 +114,24 @@ export interface RectZone {
   h: number;
   label: string;
 }
+export type LevelTaskType =
+  | 'fix_taps'
+  | 'collect_puddles'
+  | 'deliver_meals'
+  | 'water_garden'
+  | 'clean_spills'
+  | 'restock_counter'
+  | 'help_stalls'
+  | 'collect_mystery_items'
+  | 'restore_gardens'
+  | 'teamwork';
+
+export interface LevelTask {
+  id: string;
+  title: string;
+  type: LevelTaskType;
+  target: number;
+}
 
 export interface LevelConfig {
   id: string;
@@ -128,6 +146,7 @@ export interface LevelConfig {
   worldWidth: number;
   worldHeight: number;
   durationSeconds: number;
+  tasks: LevelTask[];
   waterTargetLiters: number;
   mealsTarget: number;
   floorTheme: 'courtyard' | 'cafeteria' | 'market' | 'plaza';
